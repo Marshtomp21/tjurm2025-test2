@@ -2,22 +2,18 @@
 
 std::vector<cv::Mat> split(const cv::Mat& rgb_image) {
     /**
-     * TODO: 将图像分割为 blue green red 三个通道，具体内容：
-     *  1. 将彩色图片 rgb_image 转换为三个通道的 cv::Mat
-     *  2. 将三个通道的 cv::Mat 保存到 std::vector<cv::Mat> 中
-     * HINT:
-     *  1. 使用 cv::split 函数，其参数如下
-     *     void cv::split(
-     *          InputArray          src,    // 输入的彩色图像
-     *          OutputArrayOfArrays mv      // 输出的三个通道图像
-     *     )
-     * PS: 在 opencv 中，图像的通道顺序是 BGR: Blue Green Red
-     * GOAL:
-     *  1. 此任务会自动判断你的代码是否正确，通过测试 (打印出 pass ) 即可
+     * TODO: 将图像分割为 blue green red 三个通道
      */
     std::vector<cv::Mat> result;
 
-    // TODO: 实现代码
+    // 使用cv::split分割图像为三个通道
+    cv::Mat channels[3];  // 用于存储三个通道
+    cv::split(rgb_image, channels);  // 将图像分割为BGR三个通道
+
+    // 将分割后的通道放入 result 中
+    result.push_back(channels[0]);  // Blue 通道
+    result.push_back(channels[1]);  // Green 通道
+    result.push_back(channels[2]);  // Red 通道
 
     return result;
 }
